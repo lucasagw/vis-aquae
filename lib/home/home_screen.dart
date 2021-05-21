@@ -1,22 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:vis_aquae/core/app_colors.dart';
+import 'package:vis_aquae/shared/widgets/logo_with_background.dart';
+import 'package:vis_aquae/shared/widgets/side_bar_icons.dart';
 import 'package:vis_aquae/shared/widgets/side_bar.dart';
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  HomeScreen({Key key}) : super(key: key);
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: Container(
+        color: AppColors.backgroundScreen,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SideBar(),
+          children: [
+            SizedBox(height: 150),
+            Container(
+              alignment: Alignment.centerLeft,
+              child: SideBar(),
+            ),
+            SizedBox(height: 150),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                LogoWithBackgound(),
+              ],
+            ),
           ],
         ),
       ),

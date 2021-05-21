@@ -10,11 +10,14 @@ class _SideBarState extends State<SideBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 350,
-      width: 220,
+      height: 325,
+      width: 190,
       decoration: BoxDecoration(
-        color: Colors.black,
-        borderRadius: BorderRadius.circular(20),
+        color: AppColors.sideBackgroundBlack,
+        borderRadius: BorderRadius.only(
+          topRight: Radius.circular(20),
+          bottomRight: Radius.circular(20),
+        ),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -33,7 +36,11 @@ class _SideBarState extends State<SideBar> {
                 Container(
                   width: 130,
                   child: ElevatedButton.icon(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(
+                        AppRoutes.registerResidence,
+                      );
+                    },
                     icon: Icon(Icons.menu, size: 40, color: Colors.white),
                     label: Text("MENU"),
                     style: AppButtonStyle.appSideBar,

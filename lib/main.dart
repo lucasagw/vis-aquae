@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:vis_aquae/core/core.dart';
+import 'package:vis_aquae/residence/register_residence_screen.dart';
 
 import 'home/home_screen.dart';
 
@@ -15,7 +17,10 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.light,
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      home: HomeScreen(),
+      routes: {
+        AppRoutes.registerResidence: (context) => RegisterResidenceScreen(),
+      },
     );
   }
 }
