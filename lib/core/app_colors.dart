@@ -8,4 +8,5 @@ class AppColors {
   static final Color iconLogoBorder = Color(0xFF5A5959);
   static final Color backgroundScreen = Color(0xFF312F2F);
   static final Color backgroundTitle = Color(0x656565);
+  static final Color backgroundContainerForm = Color(0xA49F9F);
 }

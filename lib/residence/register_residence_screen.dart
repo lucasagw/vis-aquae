@@ -14,43 +14,194 @@ class _RegisterResidenceScreenState extends State<RegisterResidenceScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final media = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
         alignment: Alignment.center,
         padding: const EdgeInsets.all(16),
         color: AppColors.backgroundScreen,
-        child: Column(
-          children: [
-            SafeArea(
-              child: Row(
-                children: [
-                  IconButton(
-                    icon: Icon(Icons.arrow_back),
-                    onPressed: () => Navigator.pop(context),
-                  )
-                ],
+        child: Container(
+          width: media.width,
+          height: media.height,
+          child: Column(
+            children: [
+              SafeArea(
+                child: Row(
+                  children: [
+                    IconButton(
+                      icon: Icon(Icons.arrow_back),
+                      onPressed: () => Navigator.pop(context),
+                    )
+                  ],
+                ),
               ),
-            ),
-            ContainerTitle(title: 'Registrar Residencia'),
-            Form(
-              key: _formKey,
-              child: Column(
-                children: <Widget>[
-                  TextFormField(
-                    decoration: InputDecoration(labelText: 'Nome'),
-                    keyboardType: TextInputType.text,
-                    validator: (value) {
-                      if (value == null || value.isEmpty)
-                        return 'Preencha o campo.';
-                      return null;
-                    },
+              ContainerTitle(title: 'Registrar Residência'),
+              SingleChildScrollView(
+                child: Expanded(
+                  child: Container(
+                    width: 400,
+                    height: 450,
+                    margin: EdgeInsets.symmetric(vertical: 15),
+                    padding: const EdgeInsets.all(15),
+                    decoration: BoxDecoration(
+                      color: AppColors.iconLogoBackgroun,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Container(
+                      width: 380,
+                      height: 420,
+                      padding: const EdgeInsets.all(15),
+                      decoration: BoxDecoration(
+                        color: Colors.grey[600],
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Form(
+                        key: _formKey,
+                        child: ListView(
+                          children: <Widget>[
+                            TextFormField(
+                              cursorColor: Colors.grey,
+                              decoration: AppInputDecoration.inputDecoration(
+                                labelText: 'Nome',
+                              ),
+                              keyboardType: TextInputType.text,
+                              validator: (value) {
+                                if (value == null || value.isEmpty)
+                                  return 'Preencha o campo.';
+                                return null;
+                              },
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10.0),
+                              child: TextFormField(
+                                cursorColor: Colors.grey,
+                                decoration: AppInputDecoration.inputDecoration(
+                                  labelText: 'Quantidade de Moradores',
+                                ),
+                                keyboardType: TextInputType.text,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty)
+                                    return 'Preencha o campo.';
+                                  return null;
+                                },
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10.0),
+                              child: TextFormField(
+                                cursorColor: Colors.grey,
+                                decoration: AppInputDecoration.inputDecoration(
+                                  labelText: 'Pais',
+                                ),
+                                keyboardType: TextInputType.text,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty)
+                                    return 'Preencha o campo.';
+                                  return null;
+                                },
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10.0),
+                              child: TextFormField(
+                                cursorColor: Colors.grey,
+                                decoration: AppInputDecoration.inputDecoration(
+                                  labelText: 'Estado',
+                                ),
+                                keyboardType: TextInputType.text,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty)
+                                    return 'Preencha o campo.';
+                                  return null;
+                                },
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10.0),
+                              child: TextFormField(
+                                cursorColor: Colors.grey,
+                                decoration: AppInputDecoration.inputDecoration(
+                                  labelText: 'Cidade',
+                                ),
+                                keyboardType: TextInputType.text,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty)
+                                    return 'Preencha o campo.';
+                                  return null;
+                                },
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10.0),
+                              child: TextFormField(
+                                cursorColor: Colors.grey,
+                                decoration: AppInputDecoration.inputDecoration(
+                                  labelText: 'Bairro',
+                                ),
+                                keyboardType: TextInputType.text,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty)
+                                    return 'Preencha o campo.';
+                                  return null;
+                                },
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10.0),
+                              child: TextFormField(
+                                cursorColor: Colors.grey,
+                                decoration: AppInputDecoration.inputDecoration(
+                                  labelText: 'Rua',
+                                ),
+                                keyboardType: TextInputType.text,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty)
+                                    return 'Preencha o campo.';
+                                  return null;
+                                },
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10.0),
+                              child: TextFormField(
+                                cursorColor: Colors.grey,
+                                decoration: AppInputDecoration.inputDecoration(
+                                  labelText: 'Número',
+                                ),
+                                keyboardType: TextInputType.text,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty)
+                                    return 'Preencha o campo.';
+                                  return null;
+                                },
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10.0),
+                              child: TextFormField(
+                                cursorColor: Colors.grey,
+                                decoration: AppInputDecoration.inputDecoration(
+                                  labelText: 'Complemento',
+                                ),
+                                keyboardType: TextInputType.text,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty)
+                                    return 'Preencha o campo.';
+                                  return null;
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
-                ],
+                ),
               ),
-            ),
-            Spacer(),
-            LogoWithBackgound(),
-          ],
+              // Spacer(),
+              LogoWithBackgound(),
+            ],
+          ),
         ),
       ),
     );
