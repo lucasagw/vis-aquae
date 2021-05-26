@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vis_aquae/core/app_colors.dart';
 import 'package:vis_aquae/shared/widgets/logo_with_background.dart';
-import 'package:vis_aquae/shared/widgets/side_bar_icons.dart';
 import 'package:vis_aquae/shared/widgets/side_bar.dart';
 
 class HomeScreen extends StatefulWidget {
