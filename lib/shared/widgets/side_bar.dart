@@ -43,7 +43,7 @@ class _SideBarState extends State<SideBar> {
                     },
                     icon: Icon(Icons.menu, size: 40, color: Colors.white),
                     label: Text("MENU"),
-                    style: AppButtonStyle.appSideBar,
+                    style: AppButtonStyles.appSideBarStyleButton,
                   ),
                 ),
                 Container(
@@ -56,7 +56,7 @@ class _SideBarState extends State<SideBar> {
                       height: 30,
                     ),
                     label: Text("GRÁFICO"),
-                    style: AppButtonStyle.appSideBar,
+                    style: AppButtonStyles.appSideBarStyleButton,
                   ),
                 ),
                 Container(
@@ -69,7 +69,7 @@ class _SideBarState extends State<SideBar> {
                       height: 30,
                     ),
                     label: Text("ÁGUA"),
-                    style: AppButtonStyle.appSideBar,
+                    style: AppButtonStyles.appSideBarStyleButton,
                   ),
                 ),
                 Container(
@@ -82,7 +82,7 @@ class _SideBarState extends State<SideBar> {
                     ),
                     label: Text("ENERGIA"),
                     onPressed: () {},
-                    style: AppButtonStyle.appSideBar,
+                    style: AppButtonStyles.appSideBarStyleButton,
                   ),
                 ),
               ],

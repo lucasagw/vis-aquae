@@ -9,4 +9,5 @@ class AppColors {
   static final Color backgroundScreen = Color(0xFF312F2F);
   static final Color backgroundTitle = Color(0x656565);
   static final Color backgroundContainerForm = Color(0xA49F9F);
+  static final Color registerButton = Color(0x2F532B);
 }
