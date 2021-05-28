@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vis_aquae/core/app_colors.dart';
 import 'package:vis_aquae/core/core.dart';
 
-class LogoWithBackgound extends StatelessWidget {
+class AppLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(

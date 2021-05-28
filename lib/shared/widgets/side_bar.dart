@@ -38,7 +38,7 @@ class _SideBarState extends State<SideBar> {
                   child: ElevatedButton.icon(
                     onPressed: () {
                       Navigator.of(context).pushNamed(
-                        AppRoutes.registerResidence,
+                        AppRoutes.registerResidence1,
                       );
                     },
                     icon: Icon(Icons.menu, size: 40, color: Colors.white),

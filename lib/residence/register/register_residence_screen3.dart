@@ -1,0 +1,145 @@
+import 'package:flutter/material.dart';
+import 'package:vis_aquae/core/core.dart';
+import 'package:vis_aquae/shared/widgets/button_green.dart';
+import 'package:vis_aquae/shared/widgets/container_title.dart';
+import 'package:vis_aquae/shared/widgets/app_logo.dart';
+
+class RegisterResidenceScreen3 extends StatefulWidget {
+  @override
+  _RegisterResidenceScreen3State createState() =>
+      _RegisterResidenceScreen3State();
+}
+
+class _RegisterResidenceScreen3State extends State<RegisterResidenceScreen3> {
+  final _formKey = GlobalKey<FormState>();
+  final _formData = Map<String, String>();
+
+  @override
+  Widget build(BuildContext context) {
+    final media = MediaQuery.of(context).size;
+    return Scaffold(
+      body: Container(
+        width: media.width,
+        height: media.height,
+        alignment: Alignment.center,
+        padding: const EdgeInsets.all(16),
+        color: AppColors.backgroundScreen,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SafeArea(
+                child: Row(
+                  children: [
+                    IconButton(
+                      icon: Icon(Icons.arrow_back),
+                      onPressed: () => Navigator.pop(context),
+                    )
+                  ],
+                ),
+              ),
+              ContainerTitle(title: 'Registrar Residência'),
+              Container(
+                width: 350,
+                height: 400,
+                margin: EdgeInsets.symmetric(vertical: 15),
+                padding: const EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                  color: AppColors.iconLogoBackgroun,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Container(
+                  width: 380,
+                  height: 420,
+                  padding: const EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                    color: Colors.grey[600],
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Form(
+                    key: _formKey,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10.0),
+                            child: TextFormField(
+                              cursorColor: Colors.grey,
+                              decoration: AppInputDecoration.inputDecoration(
+                                labelText: 'Bairro',
+                              ),
+                              keyboardType: TextInputType.text,
+                              validator: (value) {
+                                if (value == null || value.isEmpty)
+                                  return 'Preencha o campo.';
+                                return null;
+                              },
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10.0),
+                            child: TextFormField(
+                              cursorColor: Colors.grey,
+                              decoration: AppInputDecoration.inputDecoration(
+                                labelText: 'Rua',
+                              ),
+                              keyboardType: TextInputType.text,
+                              validator: (value) {
+                                if (value == null || value.isEmpty)
+                                  return 'Preencha o campo.';
+                                return null;
+                              },
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10.0),
+                            child: TextFormField(
+                              cursorColor: Colors.grey,
+                              decoration: AppInputDecoration.inputDecoration(
+                                labelText: 'Número',
+                              ),
+                              keyboardType: TextInputType.text,
+                              validator: (value) {
+                                if (value == null || value.isEmpty)
+                                  return 'Preencha o campo.';
+                                return null;
+                              },
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10.0),
+                            child: TextFormField(
+                              cursorColor: Colors.grey,
+                              decoration: AppInputDecoration.inputDecoration(
+                                labelText: 'Complemento',
+                              ),
+                              keyboardType: TextInputType.text,
+                              validator: (value) {
+                                if (value == null || value.isEmpty)
+                                  return 'Preencha o campo.';
+                                return null;
+                              },
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 10.0,
+                            ),
+                            child: ButtonGreen(
+                              label: 'Registrar',
+                              onPressed: () {},
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              AppLogo(),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
