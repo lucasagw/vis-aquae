@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:vis_aquae/core/core.dart';
+import 'package:vis_aquae/residence/register/view_models/register_residence_screen2_view_model.dart';
+import 'package:vis_aquae/residence/register/view_models/register_residence_screen3_view_model.dart';
+import 'package:vis_aquae/shared/models/residence.dart';
 import 'package:vis_aquae/shared/widgets/button_green.dart';
 import 'package:vis_aquae/shared/widgets/container_title.dart';
 import 'package:vis_aquae/shared/widgets/app_logo.dart';
@@ -13,6 +16,51 @@ class RegisterResidenceScreen3 extends StatefulWidget {
 class _RegisterResidenceScreen3State extends State<RegisterResidenceScreen3> {
   final _formKey = GlobalKey<FormState>();
   final _formData = Map<String, String>();
+  RegisterResidenceScreen2ViewModel registerResidenceScreen2ViewModel;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final registerResidenceScreen2ViewModelNavigator = ModalRoute.of(context)
+        .settings
+        .arguments as RegisterResidenceScreen2ViewModel;
+    if (registerResidenceScreen2ViewModelNavigator != null) {
+      registerResidenceScreen2ViewModel =
+          registerResidenceScreen2ViewModelNavigator;
+    }
+  }
+
+  void submit() {
+    if (_formKey.currentState.validate()) {
+      _formKey.currentState.save();
+      final registerResidenceScreen3ViewModel =
+          RegisterResidenceScreen3ViewModel(
+        registerResidenceScreen2ViewModel,
+        _formData['bairro'],
+        _formData['rua'],
+        _formData['numero'],
+        _formData['complemento'],
+      );
+      Residence residence = Residence(
+        registerResidenceScreen3ViewModel.registerResidenceScreen2ViewModel
+            .registerResidenceScreen1ViewModel.nome,
+        registerResidenceScreen3ViewModel.registerResidenceScreen2ViewModel
+            .registerResidenceScreen1ViewModel.qtdMoradores,
+        registerResidenceScreen3ViewModel.registerResidenceScreen2ViewModel
+            .registerResidenceScreen1ViewModel.cep,
+        registerResidenceScreen3ViewModel
+            .registerResidenceScreen2ViewModel.pais,
+        registerResidenceScreen3ViewModel
+            .registerResidenceScreen2ViewModel.estado,
+        registerResidenceScreen3ViewModel
+            .registerResidenceScreen2ViewModel.cidade,
+        registerResidenceScreen3ViewModel.bairro,
+        registerResidenceScreen3ViewModel.rua,
+        registerResidenceScreen3ViewModel.numero,
+        registerResidenceScreen3ViewModel.complemento,
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,6 +116,8 @@ class _RegisterResidenceScreen3State extends State<RegisterResidenceScreen3> {
                                 labelText: 'Bairro',
                               ),
                               keyboardType: TextInputType.text,
+                              onSaved: (newValue) =>
+                                  _formData['bairro'] = newValue,
                               validator: (value) {
                                 if (value == null || value.isEmpty)
                                   return 'Preencha o campo.';
@@ -83,6 +133,8 @@ class _RegisterResidenceScreen3State extends State<RegisterResidenceScreen3> {
                                 labelText: 'Rua',
                               ),
                               keyboardType: TextInputType.text,
+                              onSaved: (newValue) =>
+                                  _formData['rua'] = newValue,
                               validator: (value) {
                                 if (value == null || value.isEmpty)
                                   return 'Preencha o campo.';
@@ -98,6 +150,8 @@ class _RegisterResidenceScreen3State extends State<RegisterResidenceScreen3> {
                                 labelText: 'Número',
                               ),
                               keyboardType: TextInputType.text,
+                              onSaved: (newValue) =>
+                                  _formData['numero'] = newValue,
                               validator: (value) {
                                 if (value == null || value.isEmpty)
                                   return 'Preencha o campo.';
@@ -113,6 +167,8 @@ class _RegisterResidenceScreen3State extends State<RegisterResidenceScreen3> {
                                 labelText: 'Complemento',
                               ),
                               keyboardType: TextInputType.text,
+                              onSaved: (newValue) =>
+                                  _formData['complemento'] = newValue,
                               validator: (value) {
                                 if (value == null || value.isEmpty)
                                   return 'Preencha o campo.';

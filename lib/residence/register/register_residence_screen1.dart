@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vis_aquae/core/core.dart';
+import 'package:vis_aquae/residence/register/view_models/register_residence_screen1_view_model.dart';
 import 'package:vis_aquae/shared/widgets/button_green.dart';
 import 'package:vis_aquae/shared/widgets/container_title.dart';
 import 'package:vis_aquae/shared/widgets/app_logo.dart';
@@ -13,6 +14,22 @@ class RegisterResidenceScreen1 extends StatefulWidget {
 class _RegisterResidenceScreen1State extends State<RegisterResidenceScreen1> {
   final _formKey = GlobalKey<FormState>();
   final _formData = Map<String, String>();
+
+  void submit() {
+    if (_formKey.currentState.validate()) {
+      _formKey.currentState.save();
+      final registerResidenceScreen1ViewModel =
+          RegisterResidenceScreen1ViewModel(
+        _formData['nome'],
+        int.tryParse(_formData['qtdMoradores']) ?? 0,
+        _formData['cep'],
+      );
+      Navigator.of(context).pushNamed(
+        AppRoutes.registerResidence2,
+        arguments: registerResidenceScreen1ViewModel,
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,6 +83,7 @@ class _RegisterResidenceScreen1State extends State<RegisterResidenceScreen1> {
                               labelText: 'Nome',
                             ),
                             keyboardType: TextInputType.text,
+                            onSaved: (newValue) => _formData['nome'] = newValue,
                             validator: (value) {
                               if (value == null || value.isEmpty)
                                 return 'Preencha o campo.';
@@ -79,7 +97,9 @@ class _RegisterResidenceScreen1State extends State<RegisterResidenceScreen1> {
                               decoration: AppInputDecoration.inputDecoration(
                                 labelText: 'Quantidade de Moradores',
                               ),
-                              keyboardType: TextInputType.text,
+                              keyboardType: TextInputType.number,
+                              onSaved: (newValue) =>
+                                  _formData['qtdMoradores'] = newValue,
                               validator: (value) {
                                 if (value == null || value.isEmpty)
                                   return 'Preencha o campo.';
@@ -95,6 +115,8 @@ class _RegisterResidenceScreen1State extends State<RegisterResidenceScreen1> {
                                 labelText: 'CEP',
                               ),
                               keyboardType: TextInputType.text,
+                              onSaved: (newValue) =>
+                                  _formData['cep'] = newValue,
                               validator: (value) {
                                 if (value == null || value.isEmpty)
                                   return 'Preencha o campo.';
@@ -108,11 +130,7 @@ class _RegisterResidenceScreen1State extends State<RegisterResidenceScreen1> {
                             ),
                             child: ButtonGreen(
                               label: 'Continuar',
-                              onPressed: () {
-                                Navigator.of(context).pushNamed(
-                                  AppRoutes.registerResidence2,
-                                );
-                              },
+                              onPressed: submit,
                             ),
                           ),
                         ],
