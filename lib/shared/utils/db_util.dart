@@ -2,11 +2,9 @@ import 'package:sqflite/sqflite.dart' as sql;
 import 'package:path/path.dart' as path;
 
 class DbUtil {
-  //TODO: Ajustar retrições de chave na tabela residencia_dispositivo e validar
-  //modelagem dela se vai continuar como está ou vai tirar coluna qtd_dispositivos
-  //e acrescentar id para cada registro de residencia_dispositivo para que seja
-  //definido o tempo ligado de cada dispositivo individualmente.
-
+  // Nas colunas de tabelas do tipo data é definida com TEXT e utiliza a função
+  // DATETIME() passando uma String no formato ISO8601 YYYY-MM-DD HH:MM:SS.SSS
+  // como parâmetro. Exemplo: DATETIME('now','localtime');
   static Future<sql.Database> database() async {
     final dbPath = await sql.getDatabasesPath();
     return sql.openDatabase(
@@ -37,17 +35,18 @@ class DbUtil {
           CREATE TABLE residencia_dispositivo (
             id_residencia INTEGER,
             id_dispositivo INTEGER, 
-            qtd_dispositivos INTEGER,
             tempo_ligado TEXT,
             FOREIGN KEY (id_residencia) REFERENCES residencia(id_residencia),
-            FOREIGN KEY (id_dispositivo) REFERENCES dispositivo(id_dispositivo)
+            FOREIGN KEY (id_dispositivo) REFERENCES dispositivo(id_dispositivo),
+            PRIMARY KEY (id_residencia, id_dispositivo, tempo_ligado)
           );
 
           CREATE TABLE consumo (
             id_consumo INTEGER PRIMARY KEY,
             id_residencia INTEGER,
-            qtd_dispositivos INTEGER,
-            tempo_ligado TEXT,
+            leitura INTEGER,
+            data TEXT, 
+            tipo_consumo INTEGER,
             FOREIGN KEY (id_residencia) REFERENCES residencia(id_residencia)
           );
           ''',
