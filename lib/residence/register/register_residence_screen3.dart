@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vis_aquae/core/core.dart';
 import 'package:vis_aquae/residence/register/view_models/register_residence_screen2_view_model.dart';
-import 'package:vis_aquae/residence/register/view_models/register_residence_screen3_view_model.dart';
+
 import 'package:vis_aquae/shared/models/residence.dart';
 import 'package:vis_aquae/shared/widgets/button_green.dart';
 import 'package:vis_aquae/shared/widgets/container_title.dart';
@@ -33,31 +33,20 @@ class _RegisterResidenceScreen3State extends State<RegisterResidenceScreen3> {
   void submit() {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
-      final registerResidenceScreen3ViewModel =
-          RegisterResidenceScreen3ViewModel(
-        registerResidenceScreen2ViewModel,
+
+      Residence residence = Residence(
+        registerResidenceScreen2ViewModel
+            .registerResidenceScreen1ViewModel.nome,
+        registerResidenceScreen2ViewModel
+            .registerResidenceScreen1ViewModel.qtdMoradores,
+        registerResidenceScreen2ViewModel.registerResidenceScreen1ViewModel.cep,
+        registerResidenceScreen2ViewModel.pais,
+        registerResidenceScreen2ViewModel.estado,
+        registerResidenceScreen2ViewModel.cidade,
         _formData['bairro'],
         _formData['rua'],
         _formData['numero'],
         _formData['complemento'],
-      );
-      Residence residence = Residence(
-        registerResidenceScreen3ViewModel.registerResidenceScreen2ViewModel
-            .registerResidenceScreen1ViewModel.nome,
-        registerResidenceScreen3ViewModel.registerResidenceScreen2ViewModel
-            .registerResidenceScreen1ViewModel.qtdMoradores,
-        registerResidenceScreen3ViewModel.registerResidenceScreen2ViewModel
-            .registerResidenceScreen1ViewModel.cep,
-        registerResidenceScreen3ViewModel
-            .registerResidenceScreen2ViewModel.pais,
-        registerResidenceScreen3ViewModel
-            .registerResidenceScreen2ViewModel.estado,
-        registerResidenceScreen3ViewModel
-            .registerResidenceScreen2ViewModel.cidade,
-        registerResidenceScreen3ViewModel.bairro,
-        registerResidenceScreen3ViewModel.rua,
-        registerResidenceScreen3ViewModel.numero,
-        registerResidenceScreen3ViewModel.complemento,
       );
     }
   }
