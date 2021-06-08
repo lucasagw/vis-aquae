@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:vis_aquae/core/core.dart';
 import 'package:vis_aquae/residence/register/view_models/register_residence_screen2_view_model.dart';
+import 'package:vis_aquae/residence/residence_viewmodel.dart';
 
-import 'package:vis_aquae/shared/models/residence.dart';
 import 'package:vis_aquae/shared/widgets/button_green.dart';
 import 'package:vis_aquae/shared/widgets/container_title.dart';
 import 'package:vis_aquae/shared/widgets/app_logo.dart';
@@ -34,7 +35,7 @@ class _RegisterResidenceScreen3State extends State<RegisterResidenceScreen3> {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
 
-      Residence residence = Residence(
+      Provider.of<ResidenceViewModel>(context, listen: false).addResidence(
         registerResidenceScreen2ViewModel
             .registerResidenceScreen1ViewModel.nome,
         registerResidenceScreen2ViewModel
@@ -171,7 +172,7 @@ class _RegisterResidenceScreen3State extends State<RegisterResidenceScreen3> {
                             ),
                             child: ButtonGreen(
                               label: 'Registrar',
-                              onPressed: () {},
+                              onPressed: submit,
                             ),
                           ),
                         ],

@@ -1,4 +1,5 @@
 class Residence {
+  final String id;
   final String nome;
   final int qtdMoradores;
   final String cep;
@@ -11,6 +12,7 @@ class Residence {
   final String complemento;
 
   Residence(
+    this.id,
     this.nome,
     this.qtdMoradores,
     this.cep,

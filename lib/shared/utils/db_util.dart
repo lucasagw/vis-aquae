@@ -14,7 +14,7 @@ class DbUtil {
         return db.execute(
           '''
           CREATE TABLE residencia (
-            id_residencia INTEGER PRIMARY KEY, 
+            id_residencia TEXT PRIMARY KEY, 
             nome TEXT,
             qtd_moradores INTEGER,
             pais TEXT,
@@ -23,18 +23,19 @@ class DbUtil {
             bairro TEXT,
             rua TEXT,
             numero TEXT,
-            complemento TEXT
+            complemento TEXT,
+            cep TEXT
           );
 
           CREATE TABLE dispositivo (
-            id_dispositivo INTEGER PRIMARY KEY, 
+            id_dispositivo TEXT PRIMARY KEY, 
             nome TEXT,
             consumo REAL
           );
 
           CREATE TABLE residencia_dispositivo (
-            id_residencia INTEGER,
-            id_dispositivo INTEGER, 
+            id_residencia TEXT,
+            id_dispositivo TEXT, 
             tempo_ligado TEXT,
             FOREIGN KEY (id_residencia) REFERENCES residencia(id_residencia),
             FOREIGN KEY (id_dispositivo) REFERENCES dispositivo(id_dispositivo),
@@ -42,8 +43,8 @@ class DbUtil {
           );
 
           CREATE TABLE consumo (
-            id_consumo INTEGER PRIMARY KEY,
-            id_residencia INTEGER,
+            id_consumo TEXT PRIMARY KEY,
+            id_residencia TEXT,
             leitura INTEGER,
             data TEXT, 
             tipo_consumo INTEGER,
