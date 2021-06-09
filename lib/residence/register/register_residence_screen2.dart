@@ -1,10 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:vis_aquae/core/core.dart';
 import 'package:vis_aquae/residence/register/view_models/register_residence_screen1_view_model.dart';
 import 'package:vis_aquae/residence/register/view_models/register_residence_screen2_view_model.dart';
-import 'package:vis_aquae/residence/residence_repository.dart';
 import 'package:vis_aquae/shared/widgets/app_bar_arrow_back.dart';
 import 'package:vis_aquae/shared/widgets/button_green.dart';
 import 'package:vis_aquae/shared/widgets/container_title.dart';

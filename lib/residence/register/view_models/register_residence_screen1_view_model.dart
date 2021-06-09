@@ -14,7 +14,7 @@ class RegisterResidenceScreen1ViewModel {
   factory RegisterResidenceScreen1ViewModel.fromJson(
           Map<String, dynamic> json) =>
       RegisterResidenceScreen1ViewModel(
-        Cep.fromJson(json['jsonCep']),
+        Cep.fromJson(json['cep']),
         json['nome'],
         json['qtdMoradores'],
       );

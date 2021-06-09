@@ -1,9 +1,9 @@
-import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:vis_aquae/core/core.dart';
 import 'package:vis_aquae/residence/register/view_models/register_residence_screen1_view_model.dart';
-import 'package:vis_aquae/residence/residence_repository.dart';
+import 'package:vis_aquae/residence/cep_repository.dart';
 import 'package:vis_aquae/shared/widgets/app_bar_arrow_back.dart';
 import 'package:vis_aquae/shared/widgets/button_green.dart';
 import 'package:vis_aquae/shared/widgets/container_title.dart';
@@ -19,25 +19,28 @@ class _RegisterResidenceScreen1State extends State<RegisterResidenceScreen1> {
   final _formKey = GlobalKey<FormState>();
   final _formData = Map<String, dynamic>();
 
-  void submit() {
+  void submit() async {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
-
-      getCep(_formData['form_cep']);
-
-      final registerResidenceScreen1ViewModel =
-          RegisterResidenceScreen1ViewModel.fromJson(_formData);
-      Navigator.of(context).pushNamed(
-        AppRoutes.registerResidence2,
-        arguments: registerResidenceScreen1ViewModel,
-      );
+      try {
+        final data = await CepRepository().getCep(_formData['form_cep']);
+        _formData['cep'] = data.toJson();
+        final registerResidenceScreen1ViewModel =
+            RegisterResidenceScreen1ViewModel.fromJson(_formData);
+        Navigator.of(context).pushNamed(
+          AppRoutes.registerResidence2,
+          arguments: registerResidenceScreen1ViewModel,
+        );
+      } on HttpException catch (e) {
+        ScaffoldMessenger.of(context).hideCurrentSnackBar();
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(e.message),
+            duration: Duration(seconds: 3),
+          ),
+        );
+      }
     }
-  }
-
-  void getCep(String cep) async {
-    final data = await ResidenceRepository().getCep(cep);
-    print(data);
-    _formData['cep'] = data;
   }
 
   @override

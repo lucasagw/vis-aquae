@@ -14,4 +14,12 @@ class Cep {
         json['bairro'],
         json['localidade'],
       );
+
+  Map<String, dynamic> toJson() => {
+        'cep': cep,
+        'logradouro': logradouro,
+        'uf': uf,
+        'bairro': bairro,
+        'localidade': localidade
+      };
 }
