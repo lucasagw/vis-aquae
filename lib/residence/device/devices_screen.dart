@@ -3,6 +3,7 @@ import 'package:vis_aquae/core/core.dart';
 import 'package:vis_aquae/residence/device/device_viewmodel.dart';
 import 'package:vis_aquae/shared/widgets/app_bar_arrow_back.dart';
 import 'package:vis_aquae/shared/widgets/container_title.dart';
+import 'package:vis_aquae/without_items/without_itens_screen.dart';
 
 class DevicesScreen extends StatefulWidget {
   const DevicesScreen({Key key}) : super(key: key);
@@ -22,41 +23,7 @@ class _DevicesScreenState extends State<DevicesScreen> {
   @override
   Widget build(BuildContext context) {
     return devices == null || devices.isEmpty
-        ? Scaffold(
-            body: Container(
-              alignment: Alignment.topCenter,
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              color: AppColors.backgroundScreen,
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    AppBarArrowBack(),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.70,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.sentiment_very_dissatisfied,
-                            size: 80,
-                            color: Colors.grey,
-                          ),
-                          SizedBox(height: 16),
-                          Text(
-                            'NENHUM DISPOSITIVO CADASTRADO',
-                            style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 18,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          )
+        ? WithoutItensScreen(text: 'NENHUM DISPOSITIVO CADASTRADO')
         : Scaffold(
             body: Container(
               alignment: Alignment.topCenter,
