@@ -11,7 +11,7 @@ class _SideBarState extends State<SideBar> {
   Widget build(BuildContext context) {
     return Container(
       height: 325,
-      width: 190,
+      width: 210,
       decoration: BoxDecoration(
         color: AppColors.sideBackgroundBlack,
         borderRadius: BorderRadius.only(
@@ -24,7 +24,7 @@ class _SideBarState extends State<SideBar> {
         children: [
           Container(
             height: 300,
-            width: 160,
+            width: 170,
             decoration: BoxDecoration(
               color: AppColors.sideBackgroundBlackLight,
               borderRadius: BorderRadius.circular(20),
@@ -34,51 +34,54 @@ class _SideBarState extends State<SideBar> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  width: 130,
+                  width: 140,
                   child: ElevatedButton.icon(
                     onPressed: () {
                       Navigator.of(context).pushNamed(
-                        AppRoutes.registerResidence1,
+                        AppRoutes.residenceScreen,
                       );
                     },
-                    icon: Icon(Icons.menu, size: 40, color: Colors.white),
-                    label: Text("MENU"),
+                    icon: Icon(
+                      Icons.home_outlined,
+                      color: Colors.white,
+                    ),
+                    label: Text("RESIDÊNCIA"),
                     style: AppButtonStyles.appSideBarStyleButton,
                   ),
                 ),
                 Container(
-                  width: 130,
+                  width: 140,
                   child: ElevatedButton.icon(
                     onPressed: () {},
                     icon: Image.asset(
                       AppImages.graficIcon,
-                      width: 35,
-                      height: 30,
+                      width: 30,
+                      height: 28,
                     ),
                     label: Text("GRÁFICO"),
                     style: AppButtonStyles.appSideBarStyleButton,
                   ),
                 ),
                 Container(
-                  width: 130,
+                  width: 140,
                   child: ElevatedButton.icon(
                     onPressed: () {},
                     icon: Image.asset(
                       AppImages.waterIcon,
-                      width: 35,
-                      height: 30,
+                      width: 30,
+                      height: 28,
                     ),
                     label: Text("ÁGUA"),
                     style: AppButtonStyles.appSideBarStyleButton,
                   ),
                 ),
                 Container(
-                  width: 130,
+                  width: 140,
                   child: ElevatedButton.icon(
                     icon: Image.asset(
                       AppImages.energyIcon,
-                      width: 35,
-                      height: 30,
+                      width: 30,
+                      height: 28,
                     ),
                     label: Text("ENERGIA"),
                     onPressed: () {},

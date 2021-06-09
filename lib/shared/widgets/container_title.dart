@@ -4,7 +4,7 @@ import 'package:vis_aquae/core/core.dart';
 class ContainerTitle extends StatelessWidget {
   final String title;
 
-  const ContainerTitle({Key key, this.title}) : super(key: key);
+  const ContainerTitle({Key key, @required this.title}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(

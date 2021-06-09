@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vis_aquae/core/core.dart';
 import 'package:vis_aquae/residence/register/view_models/register_residence_screen2_view_model.dart';
-import 'package:vis_aquae/residence/residence_viewmodel.dart';
+import 'package:vis_aquae/residence/residences_viewmodel.dart';
+import 'package:vis_aquae/shared/widgets/app_bar_arrow_back.dart';
 
 import 'package:vis_aquae/shared/widgets/button_green.dart';
 import 'package:vis_aquae/shared/widgets/container_title.dart';
@@ -28,6 +29,10 @@ class _RegisterResidenceScreen3State extends State<RegisterResidenceScreen3> {
     if (registerResidenceScreen2ViewModelNavigator != null) {
       registerResidenceScreen2ViewModel =
           registerResidenceScreen2ViewModelNavigator;
+      _formData['rua'] = registerResidenceScreen2ViewModel
+          .registerResidenceScreen1ViewModel.cep.logradouro;
+      _formData['bairro'] = registerResidenceScreen2ViewModel
+          .registerResidenceScreen1ViewModel.cep.bairro;
     }
   }
 
@@ -35,12 +40,13 @@ class _RegisterResidenceScreen3State extends State<RegisterResidenceScreen3> {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
 
-      Provider.of<ResidenceViewModel>(context, listen: false).addResidence(
+      Provider.of<ResidencesViewModel>(context, listen: false).addResidence(
         registerResidenceScreen2ViewModel
             .registerResidenceScreen1ViewModel.nome,
         registerResidenceScreen2ViewModel
             .registerResidenceScreen1ViewModel.qtdMoradores,
-        registerResidenceScreen2ViewModel.registerResidenceScreen1ViewModel.cep,
+        registerResidenceScreen2ViewModel
+            .registerResidenceScreen1ViewModel.cep.cep,
         registerResidenceScreen2ViewModel.pais,
         registerResidenceScreen2ViewModel.estado,
         registerResidenceScreen2ViewModel.cidade,
@@ -60,7 +66,7 @@ class _RegisterResidenceScreen3State extends State<RegisterResidenceScreen3> {
 
       await Future.delayed(Duration(seconds: 3));
 
-      Navigator.of(context).popUntil(ModalRoute.withName(AppRoutes.home));
+      Navigator.of(context).popUntil(ModalRoute.withName(AppRoutes.homeScreen));
     }
   }
 
@@ -77,16 +83,7 @@ class _RegisterResidenceScreen3State extends State<RegisterResidenceScreen3> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SafeArea(
-                child: Row(
-                  children: [
-                    IconButton(
-                      icon: Icon(Icons.arrow_back),
-                      onPressed: () => Navigator.pop(context),
-                    )
-                  ],
-                ),
-              ),
+              AppBarArrowBack(),
               ContainerTitle(title: 'Registrar Residência'),
               Container(
                 width: 350,
@@ -113,6 +110,7 @@ class _RegisterResidenceScreen3State extends State<RegisterResidenceScreen3> {
                           Padding(
                             padding: const EdgeInsets.only(top: 10.0),
                             child: TextFormField(
+                              initialValue: _formData['bairro'] ?? '',
                               cursorColor: Colors.grey,
                               decoration: AppInputDecoration.inputDecoration(
                                 labelText: 'Bairro',
@@ -121,7 +119,7 @@ class _RegisterResidenceScreen3State extends State<RegisterResidenceScreen3> {
                               onSaved: (newValue) =>
                                   _formData['bairro'] = newValue,
                               validator: (value) {
-                                if (value == null || value.isEmpty)
+                                if (value == null || value.trim().isEmpty)
                                   return 'Preencha o campo.';
                                 return null;
                               },
@@ -130,6 +128,7 @@ class _RegisterResidenceScreen3State extends State<RegisterResidenceScreen3> {
                           Padding(
                             padding: const EdgeInsets.only(top: 10.0),
                             child: TextFormField(
+                              initialValue: _formData['rua'] ?? '',
                               cursorColor: Colors.grey,
                               decoration: AppInputDecoration.inputDecoration(
                                 labelText: 'Rua',
@@ -138,7 +137,7 @@ class _RegisterResidenceScreen3State extends State<RegisterResidenceScreen3> {
                               onSaved: (newValue) =>
                                   _formData['rua'] = newValue,
                               validator: (value) {
-                                if (value == null || value.isEmpty)
+                                if (value == null || value.trim().isEmpty)
                                   return 'Preencha o campo.';
                                 return null;
                               },
@@ -155,7 +154,7 @@ class _RegisterResidenceScreen3State extends State<RegisterResidenceScreen3> {
                               onSaved: (newValue) =>
                                   _formData['numero'] = newValue,
                               validator: (value) {
-                                if (value == null || value.isEmpty)
+                                if (value == null || value.trim().isEmpty)
                                   return 'Preencha o campo.';
                                 return null;
                               },
@@ -172,7 +171,7 @@ class _RegisterResidenceScreen3State extends State<RegisterResidenceScreen3> {
                               onSaved: (newValue) =>
                                   _formData['complemento'] = newValue,
                               validator: (value) {
-                                if (value == null || value.isEmpty)
+                                if (value == null || value.trim().isEmpty)
                                   return 'Preencha o campo.';
                                 return null;
                               },

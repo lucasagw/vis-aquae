@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:vis_aquae/core/core.dart';
 import 'package:vis_aquae/residence/register/view_models/register_residence_screen1_view_model.dart';
 import 'package:vis_aquae/residence/register/view_models/register_residence_screen2_view_model.dart';
+import 'package:vis_aquae/residence/residence_repository.dart';
+import 'package:vis_aquae/shared/widgets/app_bar_arrow_back.dart';
 import 'package:vis_aquae/shared/widgets/button_green.dart';
 import 'package:vis_aquae/shared/widgets/container_title.dart';
 import 'package:vis_aquae/shared/widgets/app_logo.dart';
@@ -26,6 +30,9 @@ class _RegisterResidenceScreen2State extends State<RegisterResidenceScreen2> {
     if (registerResidenceScreen1ViewModelNavigator != null) {
       registerResidenceScreen1ViewModel =
           registerResidenceScreen1ViewModelNavigator;
+
+      _formData['estado'] = registerResidenceScreen1ViewModel.cep.uf;
+      _formData['cidade'] = registerResidenceScreen1ViewModel.cep.localidade;
     }
   }
 
@@ -59,16 +66,7 @@ class _RegisterResidenceScreen2State extends State<RegisterResidenceScreen2> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SafeArea(
-                child: Row(
-                  children: [
-                    IconButton(
-                      icon: Icon(Icons.arrow_back),
-                      onPressed: () => Navigator.pop(context),
-                    )
-                  ],
-                ),
-              ),
+              AppBarArrowBack(),
               ContainerTitle(title: 'Registrar Residência'),
               Container(
                 width: 350,
@@ -95,6 +93,8 @@ class _RegisterResidenceScreen2State extends State<RegisterResidenceScreen2> {
                           Padding(
                             padding: const EdgeInsets.only(top: 10.0),
                             child: TextFormField(
+                              initialValue: 'Brasil',
+                              readOnly: true,
                               cursorColor: Colors.grey,
                               decoration: AppInputDecoration.inputDecoration(
                                 labelText: 'Pais',
@@ -103,7 +103,7 @@ class _RegisterResidenceScreen2State extends State<RegisterResidenceScreen2> {
                               onSaved: (newValue) =>
                                   _formData['pais'] = newValue,
                               validator: (value) {
-                                if (value == null || value.isEmpty)
+                                if (value == null || value.trim().isEmpty)
                                   return 'Preencha o campo.';
                                 return null;
                               },
@@ -112,6 +112,7 @@ class _RegisterResidenceScreen2State extends State<RegisterResidenceScreen2> {
                           Padding(
                             padding: const EdgeInsets.only(top: 10.0),
                             child: TextFormField(
+                              initialValue: _formData['estado'] ?? '',
                               cursorColor: Colors.grey,
                               decoration: AppInputDecoration.inputDecoration(
                                 labelText: 'Estado',
@@ -120,7 +121,7 @@ class _RegisterResidenceScreen2State extends State<RegisterResidenceScreen2> {
                               onSaved: (newValue) =>
                                   _formData['estado'] = newValue,
                               validator: (value) {
-                                if (value == null || value.isEmpty)
+                                if (value == null || value.trim().isEmpty)
                                   return 'Preencha o campo.';
                                 return null;
                               },
@@ -129,6 +130,7 @@ class _RegisterResidenceScreen2State extends State<RegisterResidenceScreen2> {
                           Padding(
                             padding: const EdgeInsets.only(top: 10.0),
                             child: TextFormField(
+                              initialValue: _formData['cidade'] ?? '',
                               cursorColor: Colors.grey,
                               decoration: AppInputDecoration.inputDecoration(
                                 labelText: 'Cidade',
@@ -137,7 +139,7 @@ class _RegisterResidenceScreen2State extends State<RegisterResidenceScreen2> {
                               onSaved: (newValue) =>
                                   _formData['cidade'] = newValue,
                               validator: (value) {
-                                if (value == null || value.isEmpty)
+                                if (value == null || value.trim().isEmpty)
                                   return 'Preencha o campo.';
                                 return null;
                               },
