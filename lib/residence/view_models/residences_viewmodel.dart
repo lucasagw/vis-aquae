@@ -86,5 +86,9 @@ class ResidencesViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> removeResidence(String id) async {}
+  Future<void> removeResidence(String id) async {
+    _residences.removeWhere((element) => element.id == id);
+    DbUtil.removeResidence(id);
+    notifyListeners();
+  }
 }

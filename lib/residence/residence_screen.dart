@@ -35,7 +35,7 @@ class _ResidenceScreenState extends State<ResidenceScreen> {
             children: [
               AppBarArrowBack(),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
+                padding: const EdgeInsets.only(bottom: 16.0),
                 child: ContainerTitle(title: 'Residência'),
               ),
               Card(

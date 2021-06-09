@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:vis_aquae/core/core.dart';
 import 'package:vis_aquae/residence/view_models/residence_viewmodel.dart';
+import 'package:vis_aquae/residence/view_models/residences_viewmodel.dart';
 
 class ResidenceCard extends StatelessWidget {
   final ResidenceViewModel residenceViewModel;
@@ -36,7 +38,10 @@ class ResidenceCard extends StatelessWidget {
                     Icons.delete,
                     color: Colors.red,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Provider.of<ResidencesViewModel>(context, listen: false)
+                        .removeResidence(residenceViewModel.id);
+                  },
                 ),
               ],
             ),

@@ -70,4 +70,9 @@ class DbUtil {
     final db = await DbUtil.database();
     return db.query(table);
   }
+
+  static Future<void> removeResidence(String id) async {
+    final db = await DbUtil.database();
+    db.rawDelete('DELETE FROM residencia WHERE id_residencia = $id');
+  }
 }
