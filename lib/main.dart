@@ -7,7 +7,7 @@ import 'package:vis_aquae/residence/register/register_residence_screen2.dart';
 import 'package:vis_aquae/residence/register/register_residence_screen3.dart';
 import 'package:vis_aquae/residence/residence_screen.dart';
 import 'package:vis_aquae/residence/residences_screen.dart';
-import 'package:vis_aquae/residence/residences_viewmodel.dart';
+import 'package:vis_aquae/residence/view_models/residences_viewmodel.dart';
 
 import 'home/home_screen.dart';
 

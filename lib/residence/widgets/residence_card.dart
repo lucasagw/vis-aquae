@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vis_aquae/core/core.dart';
-import 'package:vis_aquae/residence/residence_viewmodel.dart';
+import 'package:vis_aquae/residence/view_models/residence_viewmodel.dart';
 
 class ResidenceCard extends StatelessWidget {
   final ResidenceViewModel residenceViewModel;

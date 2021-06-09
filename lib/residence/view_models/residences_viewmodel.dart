@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/widgets.dart';
-import 'package:vis_aquae/residence/residence_viewmodel.dart';
+import 'package:vis_aquae/residence/view_models/residence_viewmodel.dart';
 import 'package:vis_aquae/shared/models/residence.dart';
 import 'package:vis_aquae/shared/utils/db_util.dart';
 

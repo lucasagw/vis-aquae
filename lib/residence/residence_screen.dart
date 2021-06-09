@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vis_aquae/core/core.dart';
-import 'package:vis_aquae/residence/residence_viewmodel.dart';
+import 'package:vis_aquae/residence/view_models/residence_viewmodel.dart';
 import 'package:vis_aquae/residence/widgets/text_residence_card.dart';
 import 'package:vis_aquae/shared/widgets/app_bar_arrow_back.dart';
 import 'package:vis_aquae/shared/widgets/app_logo.dart';
