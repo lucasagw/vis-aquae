@@ -71,8 +71,12 @@ class DbUtil {
     return db.query(table);
   }
 
-  static Future<void> removeResidence(String id) async {
+  static Future<void> remove(String table, Map<String, Object> data) async {
     final db = await DbUtil.database();
-    db.rawDelete('DELETE FROM residencia WHERE id_residencia = $id');
+    db.delete(
+      table,
+      where: '${data['column']} = ?',
+      whereArgs: [data['id']],
+    );
   }
 }

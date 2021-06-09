@@ -88,7 +88,10 @@ class ResidencesViewModel with ChangeNotifier {
 
   Future<void> removeResidence(String id) async {
     _residences.removeWhere((element) => element.id == id);
-    DbUtil.removeResidence(id);
+    DbUtil.remove('residencia', {
+      'column': 'id_residencia',
+      'id': id,
+    });
     notifyListeners();
   }
 }
