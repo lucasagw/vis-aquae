@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vis_aquae/core/core.dart';
+import 'package:vis_aquae/residence/device/device_viewmodel.dart';
 import 'package:vis_aquae/residence/view_models/residence_viewmodel.dart';
 import 'package:vis_aquae/residence/widgets/text_residence_card.dart';
 import 'package:vis_aquae/shared/widgets/app_bar_arrow_back.dart';
@@ -46,19 +47,28 @@ class _ResidenceScreenState extends State<ResidenceScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        TextResidenceCard('Nome: ${residence.nome}'),
+                        TextResidenceCard('Nome:\n${residence.nome}'),
+                        Divider(color: Colors.black38),
                         TextResidenceCard(
-                          'Quantidade de Moradores: ${residence.qtdMoradores}',
+                          'Quantidade de Moradores:\n${residence.qtdMoradores}',
                         ),
-                        TextResidenceCard('Cep: ${residence.cep}'),
-                        TextResidenceCard('Pais: ${residence.pais}'),
-                        TextResidenceCard('Estado: ${residence.estado}'),
-                        TextResidenceCard('Cidade: ${residence.cidade}'),
-                        TextResidenceCard('Bairro: ${residence.bairro}'),
-                        TextResidenceCard('Rua: ${residence.rua}'),
-                        TextResidenceCard('Número: ${residence.numero}'),
+                        Divider(color: Colors.black38),
+                        TextResidenceCard('Cep:\n${residence.cep}'),
+                        Divider(color: Colors.black38),
+                        TextResidenceCard('Pais:\n${residence.pais}'),
+                        Divider(color: Colors.black38),
+                        TextResidenceCard('Estado:\n${residence.estado}'),
+                        Divider(color: Colors.black38),
+                        TextResidenceCard('Cidade:\n${residence.cidade}'),
+                        Divider(color: Colors.black38),
+                        TextResidenceCard('Bairro:\n${residence.bairro}'),
+                        Divider(color: Colors.black38),
+                        TextResidenceCard('Rua:\n${residence.rua}'),
+                        Divider(color: Colors.black38),
+                        TextResidenceCard('Número:\n${residence.numero}'),
+                        Divider(color: Colors.black38),
                         TextResidenceCard(
-                          'Complemento: ${residence.complemento}',
+                          'Complemento:\n${residence.complemento}',
                         ),
                       ],
                     ),
@@ -73,7 +83,20 @@ class _ResidenceScreenState extends State<ResidenceScreen> {
                       padding: const EdgeInsets.only(top: 8.0),
                       child: ButtonGreen(
                         label: 'DISPOSITIVOS',
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).pushNamed(
+                            AppRoutes.deviceScreen,
+                            arguments: residence.residence.dispositivos
+                                .map(
+                                  (device) => DeviceViewModel(
+                                    device.nome,
+                                    device.consumo,
+                                    device.tempoLigado,
+                                  ),
+                                )
+                                .toList(),
+                          );
+                        },
                       ),
                     ),
                   ),

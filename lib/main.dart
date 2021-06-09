@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:vis_aquae/core/core.dart';
+import 'package:vis_aquae/residence/device/devices_screen.dart';
 import 'package:vis_aquae/residence/register/register_residence_screen1.dart';
 import 'package:vis_aquae/residence/register/register_residence_screen2.dart';
 import 'package:vis_aquae/residence/register/register_residence_screen3.dart';
@@ -47,6 +48,7 @@ class MyApp extends StatelessWidget {
                 RegisterResidenceScreen2(),
             AppRoutes.registerResidence3: (context) =>
                 RegisterResidenceScreen3(),
+            AppRoutes.deviceScreen: (context) => DevicesScreen(),
           },
         ),
       ),

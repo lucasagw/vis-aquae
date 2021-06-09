@@ -1,3 +1,5 @@
+import 'package:vis_aquae/shared/models/device.dart';
+
 class Residence {
   final String id;
   final String nome;
@@ -10,6 +12,7 @@ class Residence {
   final String rua;
   final String numero;
   final String complemento;
+  final List<Device> dispositivos = [];
 
   Residence(
     this.id,

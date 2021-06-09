@@ -50,6 +50,17 @@ class DbUtil {
             tipo_consumo INTEGER,
             FOREIGN KEY (id_residencia) REFERENCES residencia(id_residencia)
           );
+
+          INSERT INTO dispositivo(id_dispositivo, nome, consumo)  VALUES ('1','Computador', 15.12);
+          INSERT INTO dispositivo(id_dispositivo, nome, consumo)  VALUES ('2', 'Forno micro-ondas - 25 L', 13.98);
+          INSERT INTO dispositivo(id_dispositivo, nome, consumo)  VALUES ('3', 'Geladeira 1 porta', 25.20);
+          INSERT INTO dispositivo(id_dispositivo, nome, consumo)  VALUES ('4', 'Lâmpada fluorescente compacta - 11 W', 1.65);
+          INSERT INTO dispositivo(id_dispositivo, nome, consumo)  VALUES ('5', 'Lâmpada fluorescente compacta - 15 W', 2.25);
+          INSERT INTO dispositivo(id_dispositivo, nome, consumo)  VALUES ('6', 'Lâmpada fluorescente compacta - 23 W', 3.45);
+          INSERT INTO dispositivo(id_dispositivo, nome, consumo)  VALUES ('7', 'Lavadora de roupas', 1.76);
+          INSERT INTO dispositivo(id_dispositivo, nome, consumo)  VALUES ('8', 'Monitor LCD', 8.16);
+          INSERT INTO dispositivo(id_dispositivo, nome, consumo)  VALUES ('9', 'TV em cores - 32" (LCD)', 14.25);
+          INSERT INTO dispositivo(id_dispositivo, nome, consumo)  VALUES ('10', 'TV em cores - 42" (LED)', 30.45);
           ''',
         );
       },

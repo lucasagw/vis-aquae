@@ -24,8 +24,6 @@ class _ResidencesScreenState extends State<ResidencesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final residencesViewModel = Provider.of<ResidencesViewModel>(context);
-
     return Scaffold(
       body: Container(
         alignment: Alignment.topCenter,
@@ -61,17 +59,19 @@ class _ResidencesScreenState extends State<ResidencesScreen> {
                   ),
                 ],
               ),
-              Container(
-                height: 400,
-                child: ListView.builder(
-                  itemCount: residencesViewModel.residencesCount,
-                  itemBuilder: (BuildContext context, int index) {
-                    final residenceViewModel =
-                        residencesViewModel.residenceByIndex(index);
-                    return ResidenceCard(
-                      residenceViewModel: residenceViewModel,
-                    );
-                  },
+              Consumer<ResidencesViewModel>(
+                builder: (context, residencesViewModel, _) => Container(
+                  height: 400,
+                  child: ListView.builder(
+                    itemCount: residencesViewModel.residencesCount,
+                    itemBuilder: (BuildContext context, int index) {
+                      final residenceViewModel =
+                          residencesViewModel.residenceByIndex(index);
+                      return ResidenceCard(
+                        residenceViewModel: residenceViewModel,
+                      );
+                    },
+                  ),
                 ),
               ),
               Padding(
