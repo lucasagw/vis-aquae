@@ -35,8 +35,8 @@ class MyApp extends StatelessWidget {
               child: child,
             );
           },
-          home: HomeScreen(),
           routes: {
+            AppRoutes.home: (context) => HomeScreen(),
             AppRoutes.registerResidence1: (context) =>
                 RegisterResidenceScreen1(),
             AppRoutes.registerResidence2: (context) =>

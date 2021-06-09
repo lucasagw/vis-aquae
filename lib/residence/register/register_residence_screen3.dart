@@ -31,7 +31,7 @@ class _RegisterResidenceScreen3State extends State<RegisterResidenceScreen3> {
     }
   }
 
-  void submit() {
+  void submit() async {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
 
@@ -49,6 +49,18 @@ class _RegisterResidenceScreen3State extends State<RegisterResidenceScreen3> {
         _formData['numero'],
         _formData['complemento'],
       );
+
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Residência Cadastrada'),
+          content: Icon(Icons.done_outline),
+        ),
+      );
+
+      await Future.delayed(Duration(seconds: 3));
+
+      Navigator.of(context).popUntil(ModalRoute.withName(AppRoutes.home));
     }
   }
 
