@@ -85,4 +85,6 @@ class ResidencesViewModel with ChangeNotifier {
 
     notifyListeners();
   }
+
+  Future<void> removeResidence(String id) async {}
 }

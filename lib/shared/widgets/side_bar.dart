@@ -38,7 +38,7 @@ class _SideBarState extends State<SideBar> {
                   child: ElevatedButton.icon(
                     onPressed: () {
                       Navigator.of(context).pushNamed(
-                        AppRoutes.residenceScreen,
+                        AppRoutes.residencesScreen,
                       );
                     },
                     icon: Icon(
@@ -46,7 +46,7 @@ class _SideBarState extends State<SideBar> {
                       color: Colors.white,
                     ),
                     label: Text("RESIDÊNCIA"),
-                    style: AppButtonStyles.appSideBarStyleButton,
+                    style: AppButtonStyles.appButtonDark,
                   ),
                 ),
                 Container(
@@ -59,7 +59,7 @@ class _SideBarState extends State<SideBar> {
                       height: 28,
                     ),
                     label: Text("GRÁFICO"),
-                    style: AppButtonStyles.appSideBarStyleButton,
+                    style: AppButtonStyles.appButtonDark,
                   ),
                 ),
                 Container(
@@ -72,7 +72,7 @@ class _SideBarState extends State<SideBar> {
                       height: 28,
                     ),
                     label: Text("ÁGUA"),
-                    style: AppButtonStyles.appSideBarStyleButton,
+                    style: AppButtonStyles.appButtonDark,
                   ),
                 ),
                 Container(
@@ -85,7 +85,7 @@ class _SideBarState extends State<SideBar> {
                     ),
                     label: Text("ENERGIA"),
                     onPressed: () {},
-                    style: AppButtonStyles.appSideBarStyleButton,
+                    style: AppButtonStyles.appButtonDark,
                   ),
                 ),
               ],

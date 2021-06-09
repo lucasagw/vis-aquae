@@ -24,7 +24,7 @@ class ContainerTitle extends StatelessWidget {
         ),
         child: Text(
           title,
-          style: AppTextStyle.headline5(context),
+          style: AppTextStyle.headline6White(context),
         ),
       ),
     );

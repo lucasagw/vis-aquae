@@ -29,7 +29,7 @@ class ButtonGreen extends StatelessWidget {
             child: Text(label),
           ),
           onPressed: onPressed,
-          style: AppButtonStyles.appRegisterStyleButton,
+          style: AppButtonStyles.appButtonGreen,
         ),
       ],
     );

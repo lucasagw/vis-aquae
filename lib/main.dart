@@ -6,6 +6,7 @@ import 'package:vis_aquae/residence/register/register_residence_screen1.dart';
 import 'package:vis_aquae/residence/register/register_residence_screen2.dart';
 import 'package:vis_aquae/residence/register/register_residence_screen3.dart';
 import 'package:vis_aquae/residence/residence_screen.dart';
+import 'package:vis_aquae/residence/residences_screen.dart';
 import 'package:vis_aquae/residence/residences_viewmodel.dart';
 
 import 'home/home_screen.dart';
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
           },
           routes: {
             AppRoutes.homeScreen: (context) => HomeScreen(),
+            AppRoutes.residencesScreen: (context) => ResidencesScreen(),
             AppRoutes.residenceScreen: (context) => ResidenceScreen(),
             AppRoutes.registerResidence1: (context) =>
                 RegisterResidenceScreen1(),
