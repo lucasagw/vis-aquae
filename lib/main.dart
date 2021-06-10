@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:vis_aquae/core/core.dart';
-import 'package:vis_aquae/residence/device/devices_screen.dart';
+import 'package:vis_aquae/residence/device/devices_residence_screen.dart';
+import 'package:vis_aquae/residence/device/devices_viewmodels.dart';
+import 'package:vis_aquae/residence/device/register_residence_device_screen.dart';
 import 'package:vis_aquae/residence/register/register_residence_screen1.dart';
 import 'package:vis_aquae/residence/register/register_residence_screen2.dart';
 import 'package:vis_aquae/residence/register/register_residence_screen3.dart';
@@ -22,6 +24,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => ResidencesViewModel()),
+        ChangeNotifierProvider(create: (_) => DevicesViewModels()),
       ],
       child: ScreenUtilInit(
         designSize: Size(412, 684),
@@ -48,7 +51,9 @@ class MyApp extends StatelessWidget {
                 RegisterResidenceScreen2(),
             AppRoutes.registerResidence3: (context) =>
                 RegisterResidenceScreen3(),
-            AppRoutes.deviceScreen: (context) => DevicesScreen(),
+            AppRoutes.deviceScreen: (context) => DevicesResidenceScreen(),
+            AppRoutes.registerDeviceScreen: (context) =>
+                RegisterResidenceDeviceScreen(),
           },
         ),
       ),

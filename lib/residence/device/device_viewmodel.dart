@@ -1,7 +1,10 @@
-class DeviceViewModel {
-  final String nome;
-  final double consumo;
-  final String tempoLigado;
+import 'package:vis_aquae/shared/models/device.dart';
 
-  DeviceViewModel(this.nome, this.consumo, this.tempoLigado);
+class DeviceViewModel {
+  final Device _device;
+  String get id => _device.id;
+  String get nome => _device.nome;
+  double get consumo => _device.consumo;
+
+  DeviceViewModel(this._device);
 }

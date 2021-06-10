@@ -6,4 +6,5 @@ class AppRoutes {
   static const String residencesScreen = '/residences-screen';
   static const String residenceScreen = '/residence-screen';
   static const String deviceScreen = '/device-screen';
+  static const String registerDeviceScreen = '/register-device-screen';
 }

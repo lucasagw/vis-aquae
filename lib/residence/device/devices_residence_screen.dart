@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:vis_aquae/core/core.dart';
-import 'package:vis_aquae/residence/device/device_viewmodel.dart';
+import 'package:vis_aquae/residence/device/device_residence_viewmodel.dart';
 import 'package:vis_aquae/shared/widgets/app_bar_arrow_back.dart';
+import 'package:vis_aquae/shared/widgets/app_logo.dart';
 import 'package:vis_aquae/shared/widgets/container_title.dart';
 import 'package:vis_aquae/without_items/without_itens_screen.dart';
 
-class DevicesScreen extends StatefulWidget {
-  const DevicesScreen({Key key}) : super(key: key);
+class DevicesResidenceScreen extends StatefulWidget {
+  const DevicesResidenceScreen({Key key}) : super(key: key);
 
   @override
-  _DevicesScreenState createState() => _DevicesScreenState();
+  _DevicesResidenceScreenState createState() => _DevicesResidenceScreenState();
 }
 
-class _DevicesScreenState extends State<DevicesScreen> {
-  List<DeviceViewModel> devices;
+class _DevicesResidenceScreenState extends State<DevicesResidenceScreen> {
+  List<DeviceResidenceViewModel> devices;
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -35,22 +36,26 @@ class _DevicesScreenState extends State<DevicesScreen> {
                     AppBarArrowBack(),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 16.0),
-                      child: ContainerTitle(title: 'Residência'),
+                      child: ContainerTitle(title: 'Dispositivos'),
                     ),
                     Container(
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
                           width: MediaQuery.of(context).size.width,
-                          child: Expanded(
-                            child: ListView.builder(
-                              itemCount: devices.length,
-                              itemBuilder: (context, index) => Card(
+                          height: 425,
+                          child: ListView.builder(
+                            itemCount: devices.length,
+                            itemBuilder: (context, index) => Card(
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
                                 child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      devices[index].nome,
+                                      devices[index].deviceViewModel.nome,
                                       style: TextStyle(fontSize: 18),
+                                      overflow: TextOverflow.ellipsis,
                                     ),
                                     Divider(color: Colors.black38),
                                     Text(
@@ -58,7 +63,7 @@ class _DevicesScreenState extends State<DevicesScreen> {
                                     ),
                                     Divider(color: Colors.black38),
                                     Text(
-                                      'Consumo:\n${devices[index].consumo}',
+                                      'Consumo:\n${devices[index].deviceViewModel.consumo}',
                                     ),
                                   ],
                                 ),
@@ -67,6 +72,10 @@ class _DevicesScreenState extends State<DevicesScreen> {
                           ),
                         ),
                       ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: AppLogo(),
                     ),
                   ],
                 ),
